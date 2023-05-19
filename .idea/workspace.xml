@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9a1a24b-1265-42eb-8a73-726306211213" name="Changes" comment="" />
+    <list default="true" id="f9a1a24b-1265-42eb-8a73-726306211213" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,14 +31,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/main/Documents/Polytech_Nice/Semestre_2/Mireille/Universe-Exploration"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/main/Documents/Polytech_Nice/Semestre_2/Mireille/Universe-Exploration&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="All in Universe-Exploration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Universe-Exploration" />
