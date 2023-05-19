@@ -11,6 +11,7 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 .idea/
 .vscode/
+.DS_Store
 # Eclipse m2e generated files
 # Eclipse Core
 .project
