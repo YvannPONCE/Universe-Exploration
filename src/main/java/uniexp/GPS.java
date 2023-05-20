@@ -26,9 +26,27 @@ public class GPS {
     }
 
     // Implement the sorting algorithme of your choice on the member variable distance
-    private List<Planete> sortPlanetes()
+    // Selection sorting choose here
+    public List<Planete> sortPlanetes()
     {
-        return null;
+        for(int i=0; i<planeteList.size() ; ++i)
+        {
+            int minValueIndex = i;
+            for(int j=i+1 ; j< planeteList.size() ; ++j)
+            {
+                if(planeteList.get(minValueIndex).distance > (planeteList.get(j).distance))
+                {
+                    minValueIndex = j;
+                }
+            }
+            swap(planeteList, i, minValueIndex);
+        }
+        return planeteList;
+    }
+    private static <T> void swap(List<T> array, int i, int j) {
+        T tmp = array.get(i);
+        array.set(i, array.get(j));
+        array.set(j, tmp);
     }
 
     //3
