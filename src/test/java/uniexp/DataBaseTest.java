@@ -16,4 +16,17 @@ class DataBaseTest {
 
         assertFalse(planeteList.contains(null));
     }
+
+    @Test
+    void goodNumberOfWaterPresencePlanet()
+    {
+        DataBase dataBase = new DataBase();
+        List<Planete> planeteList = dataBase.getPlaneteList();
+        int numberWaterPresentPlanet = 0;
+        for(Planete planete : planeteList)
+        {
+            numberWaterPresentPlanet += planete.getWaterPresence()==true? 1:0;
+        }
+        assertEquals(3, numberWaterPresentPlanet);
+    }
 }
