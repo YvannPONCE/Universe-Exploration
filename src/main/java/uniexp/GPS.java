@@ -49,10 +49,16 @@ public class GPS {
         array.set(j, tmp);
     }
 
-    //3
-    private Planete findPotentialPlanate()
+    //Use streams to find the first potential planet were we there is water.
+    public Planete findPotentialPlanate()
     {
-         return null;
+         Planete planete = planeteList.stream()
+                 .filter(x -> x.getWaterPresence()==true)
+                 .findFirst()
+                 .orElse(null);
+
+         System.out.println(planete);
+         return planete;
     }
 
     //4

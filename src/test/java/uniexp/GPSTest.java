@@ -25,4 +25,17 @@ class GPSTest {
             assertTrue(planeteList.get(i-1).getDistance() < planeteList.get(i).getDistance());
         }
     }
+
+    @Test
+    void findPotentialPlanateTest()
+    {
+        GPS gps = new GPS();
+        gps.sortPlanetes();
+        Planete planete = gps.findPotentialPlanate();
+        assertEquals("Mireille", planete.getName());
+        assertEquals(400297, planete.getDistance());
+        assertEquals(true, planete.getWaterPresence());
+        assertEquals("Massalia", planete.getClosestPlanete());
+        assertEquals(52752, planete.getClosestPlaneteDistance());
+    }
 }
