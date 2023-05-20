@@ -25,4 +25,13 @@ class GPSTest {
             assertTrue(planeteList.get(i-1).getDistance() < planeteList.get(i).getDistance());
         }
     }
+
+    @Test
+    void findPotentialPlanateTest()
+    {
+        GPS gps = new GPS();
+        gps.sortPlanetes();
+        Planete planete = gps.findPotentialPlanate();
+        assertEquals("Victoria", planete.getName());
+    }
 }
