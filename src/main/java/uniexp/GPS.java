@@ -85,7 +85,6 @@ public class GPS {
                  .findFirst()
                  .orElse(null);
 
-         System.out.println(planete);
          return planete;
     }
 
@@ -98,7 +97,6 @@ public class GPS {
             grpahInput += " "+planete.getName()+" "+planete.getClosestPlanete()+" "+planete.getClosestPlaneteDistance();
         }
         grpahInput = grpahInput.strip();
-        System.out.println(grpahInput);
         galaxy = GraphReader.galaxy(grpahInput);
     }
 
@@ -135,8 +133,9 @@ public class GPS {
                 graphMap.put(vertex, graphMap.values().stream().max(Comparator.naturalOrder()).orElse(0) + 1);
             }
         }
-        System.out.println(graphMap);
-        return true;
+        Vertex startVertex       = galaxy.getVertex(earth.getName());
+        Vertex destinationVertex = galaxy.getVertex(planete.getName());
+        return graphMap.get(startVertex) == graphMap.get(destinationVertex);
     }
     void changeGroup(Map<Vertex,Integer> graphMap, int oldGroup, int newGroup)
     {

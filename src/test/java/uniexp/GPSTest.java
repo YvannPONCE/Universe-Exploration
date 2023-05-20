@@ -64,7 +64,6 @@ class GPSTest {
         assertEquals(gps.getGalaxy().nbVertices(), goodVertex);
     }
 
-    @Test
     private void testGraphMethods(String name, Graph G) {
         System.out.println(name);
         System.out.println(G);
@@ -111,6 +110,7 @@ class GPSTest {
         System.out.println();
     }
 
+    @Test
     void isPlaneteReachableTest()
     {
         GPS gps = new GPS();
