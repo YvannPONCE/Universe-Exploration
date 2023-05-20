@@ -1,6 +1,7 @@
 package uniexp;
 
 import uniexp.galaxy.Galaxy;
+import uniexp.galaxy.graph.GraphReader;
 
 import java.util.List;
 
@@ -13,14 +14,18 @@ public class GPS {
     //5 Trouver le chemin menant à la planète choisie
 
     private List<Planete> planeteList;
+    private Galaxy galaxy;
 
     //1
     public GPS()
     {
-        //planeteList = Database.getPlaneteList();
+        DataBase dataBase = new DataBase();
+        planeteList = dataBase.getPlaneteList();
+        buildGalaxy();
+
     }
 
-    //2
+    // Implement the sorting algorithme of your choice on the member variable distance
     private List<Planete> sortPlanetes()
     {
         return null;
@@ -33,9 +38,14 @@ public class GPS {
     }
 
     //4
-    private Galaxy buildGalaxy()
+    private void buildGalaxy()
     {
-         return null;
+        String grpahInput = "";
+        for(Planete planete : planeteList)
+        {
+            grpahInput += " "+planete.getName()+" "+planete.getClosestPlanete()+" "+planete.getClosestPlaneteDistance();
+        }
+        galaxy = GraphReader.galaxy(grpahInput);
     }
 
     //5
