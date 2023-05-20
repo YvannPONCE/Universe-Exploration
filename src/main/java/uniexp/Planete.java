@@ -5,22 +5,16 @@ public class Planete {
     String name;
     double distance;
     boolean waterPresence;
+    String closestPlanete;
+    double closestPlaneteDistance;
 
-    public Planete(String name, double distance, boolean waterPresence)
+    public Planete(String name, double distance, boolean waterPresence, String closestPlanete, double closestPlaneteDistance)
     {
         this.name = name;
         this.distance = distance;
         this.waterPresence = waterPresence;
-    }
-    public Planete(Planete planete)
-    {
-        this(planete.name, planete.distance, planete.waterPresence);
-    }
-    public Planete(int planetNumber)
-    {
-        this.name="Planete_number_"+planetNumber;
-        this.distance= getRandomDistance();
-        this.waterPresence= getRandomBoolean();
+        this.closestPlanete = closestPlanete;
+        this.closestPlaneteDistance = closestPlaneteDistance;
     }
 
     public String getName() {
@@ -29,15 +23,13 @@ public class Planete {
     public double getDistance() {
         return distance;
     }
-    public boolean waterPresence() {
+    public boolean getWaterPresence() {
         return waterPresence;
     }
-
-    private boolean getRandomBoolean() {
-        return Math.random() < 0.5;
+    public String getClosestPlanete() {
+        return closestPlanete;
     }
-    private double getRandomDistance() {
-        return Math.random() * ( 100000 - 10000 ) + 10000;
+    public double getClosestPlaneteDistance() {
+        return closestPlaneteDistance;
     }
-
 }

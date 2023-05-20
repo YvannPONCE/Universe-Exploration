@@ -8,15 +8,11 @@ class PlaneteTest {
 
     @Test
     void planeteCreationTest() {
-        Planete[] planetes = new Planete[100];
-        for(int i=0; i<planetes.length ;++i)
-        {
-            planetes[i] = new Planete(i);
-        }
-
-        for(Planete planete : planetes)
-        {
-            assertTrue(planete.getDistance() >9999 && planete.getDistance() <100001);
-        }
+        Planete planete = new Planete("Eluvia", 100000, true, "Madiba", 260000);
+        assertEquals("Eluvia", planete.getName());
+        assertEquals(100000, planete.getDistance());
+        assertEquals(true, planete.getWaterPresence());
+        assertEquals("Madiba", planete.getClosestPlanete());
+        assertEquals(260000, planete.getClosestPlaneteDistance());
     }
 }
