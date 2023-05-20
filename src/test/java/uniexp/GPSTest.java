@@ -32,6 +32,10 @@ class GPSTest {
         GPS gps = new GPS();
         gps.sortPlanetes();
         Planete planete = gps.findPotentialPlanate();
-        assertEquals("Victoria", planete.getName());
+        assertEquals("Mireille", planete.getName());
+        assertEquals(400297, planete.getDistance());
+        assertEquals(true, planete.getWaterPresence());
+        assertEquals("Massalia", planete.getClosestPlanete());
+        assertEquals(52752, planete.getClosestPlaneteDistance());
     }
 }
