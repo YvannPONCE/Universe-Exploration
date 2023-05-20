@@ -24,6 +24,10 @@ public class GPS {
         buildGalaxy();
 
     }
+    Galaxy getGalaxy()
+    {
+        return galaxy;
+    }
 
     // Implement the sorting algorithme of your choice on the member variable distance
     // Selection sorting choose here
@@ -69,6 +73,8 @@ public class GPS {
         {
             grpahInput += " "+planete.getName()+" "+planete.getClosestPlanete()+" "+planete.getClosestPlaneteDistance();
         }
+        grpahInput = grpahInput.strip();
+        System.out.println(grpahInput);
         galaxy = GraphReader.galaxy(grpahInput);
     }
 
