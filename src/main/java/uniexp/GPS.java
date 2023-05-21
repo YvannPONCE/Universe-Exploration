@@ -190,4 +190,29 @@ public class GPS {
 
         return shortestPathToDestination;
     }
+
+    public static void main(String[] args) {
+        GPS gps = new GPS();
+
+        System.out.println("------Initialisation du GPS------");
+        System.out.println();
+        System.out.println("La liste des planete triées par distance est :");
+        System.out.println(gps.sortPlanetes());
+        System.out.println();
+        System.out.println("-------------------------------------------------------\n");
+        System.out.println("La planete choisie pour l'exploration est :");
+        Planete potentialPlanete = gps.findPotentialPlanate();
+        System.out.println(potentialPlanete);
+        System.out.println();
+        System.out.println("-------------------------------------------------------\n");
+        System.out.println("La planete est atteignable : "+ gps.isPlaneteReachable(potentialPlanete));
+        System.out.println();
+        System.out.println("-------------------------------------------------------\n");
+        System.out.println("Le chemin le plus court pour y parvenir est :");
+        System.out.println(gps.findTrajectory(potentialPlanete));
+        System.out.println();
+        System.out.println("-------------------------------------------------------\n");
+        System.out.println("Merci pour votre coopération !");
+
+    }
 }
