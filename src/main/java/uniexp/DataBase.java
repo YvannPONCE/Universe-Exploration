@@ -23,8 +23,8 @@ public class DataBase {
     }
 
     private void loadData(String path) {
-        BufferedReader reader;
         try {
+            BufferedReader reader;
             reader = new BufferedReader(new FileReader(path));
             String line = reader.readLine();
 
@@ -39,5 +39,6 @@ public class DataBase {
             System.out.println("Wrong input format :\n");
             e.printStackTrace();
         }
+
     }
 }

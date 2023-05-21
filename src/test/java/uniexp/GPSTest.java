@@ -16,11 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class GPSTest {
 
     @Test
-    void ConstructorTest() {
-        GPS gps = new GPS();
-    }
-
-    @Test
     void SortTest() {
         GPS gps = new GPS();
         List<Planete> planeteList = gps.sortPlanetes();

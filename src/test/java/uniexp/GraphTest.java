@@ -18,14 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author Mireille Blay
  * @// TODO: 11/05/2023  add more tests
  */
-public class GraphTest {
+class GraphTest {
 
 
     /**
      * Displays all information about the graph 'G'
      * (directed or undirected) named 'name'
      */
-    @Test
     private void testGraphMethods(String name, Graph G) {
         System.out.println(name);
         System.out.println(G);

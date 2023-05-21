@@ -122,7 +122,7 @@ public class GPS {
             Vertex destination = edge.destination();
 
             if (graphMap.containsKey(origin) && graphMap.containsKey(destination)) {
-                if (graphMap.get(origin) != graphMap.get(destination)) {
+                if (graphMap.get(origin).equals(graphMap.get(destination))==false) {
                     int min = min(graphMap.get(destination), graphMap.get(origin));
                     int max = max(graphMap.get(destination), graphMap.get(origin));
                     changeGroup(graphMap, max, min);
@@ -144,11 +144,11 @@ public class GPS {
         }
         Vertex startVertex = galaxy.getVertex(earth.getName());
         Vertex destinationVertex = galaxy.getVertex(planete.getName());
-        return graphMap.get(startVertex) == graphMap.get(destinationVertex);
+        return graphMap.get(startVertex).equals(graphMap.get(destinationVertex));
     }
 
     void changeGroup(Map<Vertex, Integer> graphMap, int oldGroup, int newGroup) {
-        graphMap.replaceAll((k, v) -> v == oldGroup ? v = newGroup : v);
+        graphMap.replaceAll((k, v) -> v == oldGroup ? newGroup : v);
     }
 
     //5
@@ -156,7 +156,7 @@ public class GPS {
         Vertex destination = galaxy.getVertex(planete.getName());
         Vertex start = galaxy.getVertex(earth.getName());
         if (start == null || destination == null) {
-            return null;
+            return Collections.emptyList();
         }
 
         Map<Vertex, Double> dijkstraMap = new HashMap<>();
@@ -180,12 +180,18 @@ public class GPS {
                 }
             }
 
-            currentVertex = dijkstraMap.entrySet().stream()
+            Optional<Map.Entry<Vertex, Double>> currentVertexOPT = dijkstraMap.entrySet().stream()
                     .sorted((x1, x2) -> x1.getValue().compareTo(x2.getValue()))
                     .filter(x -> !visitedVertex.contains(x.getKey()))
-                    .findFirst()
-                    .orElse(null)
-                    .getKey();
+                    .findFirst();
+            if(currentVertexOPT.isPresent())
+            {
+                currentVertex = currentVertexOPT.get().getKey();
+            }
+            else
+            {
+                break;
+            }
 
             visitedVertex.add(currentVertex);
         } while (!visitedVertex.containsAll(dijkstraMap.keySet()));
