@@ -52,4 +52,4 @@ jobs:
           cache: 'maven'
 
       - name: SonarQube
-        run: mvn sonar:sonar -Dsonar.host.url=${{ secrets.SONARQUBE_URL }} -Dsonar.projectKey=Universe-Exploration -Dsonar.projectName=Universe-Exploration -Dsonar.token=${{ secrets.SONARQUBE_TOKEN }}
+        run: mvn clean sonar:sonar -Dsonar.host.url=${{ secrets.SONARQUBE_URL }} -Dsonar.projectKey=Universe-Exploration -Dsonar.projectName=Universe-Exploration -Dsonar.token=${{ secrets.SONARQUBE_TOKEN }}
