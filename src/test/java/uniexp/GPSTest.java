@@ -1,5 +1,6 @@
 package uniexp;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.engine.descriptor.TestInstanceLifecycleUtils;
@@ -8,8 +9,11 @@ import uniexp.galaxy.graph.Edge;
 import uniexp.galaxy.graph.Graph;
 import uniexp.galaxy.graph.Vertex;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.SortedMap;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.Double.parseDouble;
@@ -128,5 +132,26 @@ class GPSTest {
 
         assertFalse(gps.isPlaneteReachable(planete1));
         assertTrue(gps.isPlaneteReachable(planete2));
+    }
+
+    @Test
+    void findTrajectory()
+    {
+        GPS gps = new GPS();
+        List<Planete> planeteList = gps.sortPlanetes();
+        Planete planete = planeteList.stream()
+                .parallel()
+                .filter(x->x.getName().equals("Mireille"))
+                .findFirst()
+                .orElse(null);
+
+        List<Vertex> vertexList = gps.findTrajectory(planete);
+        List<String> planeteNames = vertexList.stream()
+                .parallel()
+                .map(x->x.getTag())
+                .collect(Collectors.toList());
+
+        List<String> expected = new ArrayList<>(Arrays.asList("Earth", "Fortuna", "Psyche", "Massalia", "Mireille"));
+        assertEquals(expected, planeteNames);
     }
 }
