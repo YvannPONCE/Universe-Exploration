@@ -6,7 +6,7 @@ Astraea 633423 false Tethis 80737
 Hebe 490297 true Victoria 59676
 Iris 143272 false Fortuna 14761
 Earth 767559 false Metis 17454
-Metis 357832 false Terre 44340
+Metis 357832 false Earth 44340
 Hygiea 370202 false Iris 10181
 Parthenope 599924 false Tethis 55985
 Mireille 400297 true Massalia 52752
@@ -16,5 +16,5 @@ Eunomia 968769 false Hebe 55574
 Psyche 754860 false Fortuna 84964
 Tethis 642070 true Astraea 49607
 Melpomene 317766 false Hygiea 75910
-Fortuna 168970 false Terre 37017
+Fortuna 168970 false Earth 37017
 Massalia 518193 false Psyche 32576

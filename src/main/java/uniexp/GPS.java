@@ -6,11 +6,9 @@ import uniexp.galaxy.graph.Edge;
 import uniexp.galaxy.graph.GraphReader;
 import uniexp.galaxy.graph.Vertex;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import javax.print.attribute.standard.Destination;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -143,8 +141,53 @@ public class GPS {
     }
 
     //5
-    private List<Planete> findTrajectory()
+    public List<Vertex> findTrajectory(Planete planete)
     {
-         return null;
+        Vertex destination  = galaxy.getVertex(planete.getName());
+        Vertex start        = galaxy.getVertex(earth.getName());
+        if(start==null || destination ==null)
+        {
+            return null;
+        }
+
+        Map<Vertex, Double> dijkstraMap = new HashMap<>();
+        Map<Vertex, List<Vertex>> shortestPathMap = new HashMap<>();
+        shortestPathMap.put(start, new ArrayList<>());
+        Set<Vertex> visitedVertex = new HashSet<>();
+        for(Vertex vertex : galaxy.vertices())
+        {
+            dijkstraMap.put(vertex, Double.MAX_VALUE);
+        }
+        dijkstraMap.replace(start, 0D);
+        Vertex currentVertex = start;
+
+        do
+        {
+           for(Vertex vertex : galaxy.adjacents(currentVertex))
+           {
+               double weight = galaxy.findEdge(currentVertex, vertex).weight();
+               if(dijkstraMap.get(currentVertex)+weight < dijkstraMap.get(vertex))
+               {
+                   dijkstraMap.replace(vertex, dijkstraMap.get(currentVertex)+weight);
+                   List<Vertex> shortestPath = new ArrayList<>(shortestPathMap.get(currentVertex));
+                   shortestPath.add(currentVertex);
+                   shortestPathMap.put(vertex, shortestPath);
+               }
+           }
+
+           currentVertex = dijkstraMap.entrySet().stream()
+                   .sorted((x1,x2)-> x1.getValue().compareTo(x2.getValue()))
+                   .filter(x -> visitedVertex.contains(x.getKey())==false)
+                   .findFirst()
+                   .orElse(null)
+                   .getKey();
+
+           visitedVertex.add(currentVertex);
+        }while (visitedVertex.containsAll(dijkstraMap.keySet())==false);
+
+        List<Vertex> shortestPathToDestination = shortestPathMap.get(destination);
+        shortestPathToDestination.add(destination);
+
+        return shortestPathToDestination;
     }
 }
