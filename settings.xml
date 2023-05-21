@@ -1,0 +1,1 @@
+sonar:sonar -Dsonar.host.url=http://129.151.226.254:80 -Dsonar.projectKey=Universe-Exploration -Dsonar.projectName=Universe-Exploration -Dsonar.token=squ_61597e457d26196486714f7c5602f628cf72b965
