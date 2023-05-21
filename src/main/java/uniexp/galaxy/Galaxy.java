@@ -19,9 +19,9 @@ public class Galaxy extends AbstractGraph {
     public void addEdge(Vertex u, Vertex v, double weight) {
         checkVertex(u);
         checkVertex(v);
-        if ( add(u,v,weight) ) {
-            storeEdge(u,v,weight);
-            add(v,u,weight);
+        if (add(u, v, weight)) {
+            storeEdge(u, v, weight);
+            add(v, u, weight);
             nbEdges++;
         }
     }
@@ -30,8 +30,8 @@ public class Galaxy extends AbstractGraph {
     public void removeEdge(Vertex u, Vertex v) {
         checkVertex(u);
         checkVertex(v);
-        if ( remove(u,v) ) {
-            remove(v,u);
+        if (remove(u, v)) {
+            remove(v, u);
             nbEdges--;
         }
     }
@@ -59,11 +59,11 @@ public class Galaxy extends AbstractGraph {
 
     @Override
     public Edge findEdge(Vertex u, Vertex v) {
-        Map<Vertex,Edge> map = edges.get(u);
-        if ( map == null )
+        Map<Vertex, Edge> map = edges.get(u);
+        if (map == null)
             return edges.get(v).get(u);
         Edge e = map.get(v);
-        if ( e == null)
+        if (e == null)
             return edges.get(v).get(u);
         return e;
     }

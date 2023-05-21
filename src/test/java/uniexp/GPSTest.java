@@ -1,10 +1,6 @@
 package uniexp;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.engine.descriptor.TestInstanceLifecycleUtils;
-import uniexp.galaxy.Galaxy;
 import uniexp.galaxy.graph.Edge;
 import uniexp.galaxy.graph.Graph;
 import uniexp.galaxy.graph.Vertex;
@@ -12,9 +8,7 @@ import uniexp.galaxy.graph.Vertex;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.SortedMap;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.lang.Double.parseDouble;
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,41 +21,34 @@ class GPSTest {
     }
 
     @Test
-    void SortTest()
-    {
+    void SortTest() {
         GPS gps = new GPS();
         List<Planete> planeteList = gps.sortPlanetes();
-        for(int i=1; i<planeteList.size() ; ++i)
-        {
-            assertTrue(planeteList.get(i-1).getDistance() < planeteList.get(i).getDistance());
+        for (int i = 1; i < planeteList.size(); ++i) {
+            assertTrue(planeteList.get(i - 1).getDistance() < planeteList.get(i).getDistance());
         }
     }
 
     @Test
-    void findPotentialPlanateTest()
-    {
+    void findPotentialPlanateTest() {
         GPS gps = new GPS();
         gps.sortPlanetes();
         Planete planete = gps.findPotentialPlanate();
         assertEquals("Mireille", planete.getName());
         assertEquals(400297, planete.getDistance());
-        assertEquals(true, planete.getWaterPresence());
+        assertTrue(planete.getWaterPresence());
         assertEquals("Massalia", planete.getClosestPlanete());
         assertEquals(52752, planete.getClosestPlaneteDistance());
     }
 
-    void validateGalaxyFormationTest()
-    {
+    void validateGalaxyFormationTest() {
         GPS gps = new GPS();
         //testGraphMethods("Galaxy", gps.getGalaxy());
-        int goodVertex =0;
-        for(Vertex vertex : gps.getGalaxy().vertices())
-        {
+        int goodVertex = 0;
+        for (Vertex vertex : gps.getGalaxy().vertices()) {
             try {
                 parseDouble(vertex.getTag());
-            }
-            catch (NumberFormatException e)
-            {
+            } catch (NumberFormatException e) {
                 ++goodVertex;
             }
         }
@@ -115,18 +102,17 @@ class GPSTest {
     }
 
     @Test
-    void isPlaneteReachableTest()
-    {
+    void isPlaneteReachableTest() {
         GPS gps = new GPS();
         List<Planete> planeteList = gps.sortPlanetes();
         Planete planete1 = planeteList.stream()
                 .parallel()
-                .filter(x->x.getName().equals("Ceres"))
+                .filter(x -> x.getName().equals("Ceres"))
                 .findFirst()
                 .orElse(null);
         Planete planete2 = planeteList.stream()
                 .parallel()
-                .filter(x->x.getName().equals("Hygiea"))
+                .filter(x -> x.getName().equals("Hygiea"))
                 .findFirst()
                 .orElse(null);
 
@@ -135,20 +121,19 @@ class GPSTest {
     }
 
     @Test
-    void findTrajectory()
-    {
+    void findTrajectory() {
         GPS gps = new GPS();
         List<Planete> planeteList = gps.sortPlanetes();
         Planete planete = planeteList.stream()
                 .parallel()
-                .filter(x->x.getName().equals("Mireille"))
+                .filter(x -> x.getName().equals("Mireille"))
                 .findFirst()
                 .orElse(null);
 
         List<Vertex> vertexList = gps.findTrajectory(planete);
         List<String> planeteNames = vertexList.stream()
                 .parallel()
-                .map(x->x.getTag())
+                .map(x -> x.getTag())
                 .collect(Collectors.toList());
 
         List<String> expected = new ArrayList<>(Arrays.asList("Earth", "Fortuna", "Psyche", "Massalia", "Mireille"));
