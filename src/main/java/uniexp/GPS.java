@@ -8,8 +8,7 @@ import uniexp.galaxy.graph.Vertex;
 
 import java.util.*;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 
 public class GPS {
 
@@ -94,20 +93,18 @@ public class GPS {
 
     //Use streams to find the first potential planet were we there is water.
     public Planete findPotentialPlanate() {
-        Planete planete = planeteList.stream()
+        return planeteList.stream()
                 .parallel()
-                .filter(x -> x.getWaterPresence())
+                .filter(Planete::getWaterPresence)
                 .findFirst()
                 .orElse(null);
-
-        return planete;
     }
 
     //4
     private void buildGalaxy() {
         String grpahInput = "";
         for (Planete planete : planeteList) {
-            grpahInput += " " + planete.getName() + " " + planete.getClosestPlanete() + " " + planete.getClosestPlaneteDistance();
+            grpahInput += new StringBuilder(" " + planete.getName() + " " + planete.getClosestPlanete() + " " + planete.getClosestPlaneteDistance()).toString();
         }
         grpahInput = grpahInput.strip();
         galaxy = GraphReader.galaxy(grpahInput);
