@@ -21,4 +21,4 @@ jobs:
         run: mvn clean package
 
       - name: SonarQube
-        run: mvn sonar:sonar -Dsonar.host.url=$SONARQUBE_URL -Dsonar.projectKey=Universe-Exploration -Dsonar.projectName=Universe-Exploration -Dsonar.token=$SONARQUBE_TOKEN
+        run: mvn sonar:sonar -Dsonar.host.url=${{ secrets.SONARQUBE_URL }} -Dsonar.projectKey=Universe-Exploration -Dsonar.projectName=Universe-Exploration -Dsonar.token=${{ secrets.SONARQUBE_TOKEN }}
