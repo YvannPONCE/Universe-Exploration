@@ -32,4 +32,9 @@ public class Planete {
     public double getClosestPlaneteDistance() {
         return closestPlaneteDistance;
     }
+
+    @Override
+    public String toString() {
+        return "\n"+getName()+" : "+"\n    Distance : "+getDistance()+"\n    Presence d'eau : "+getWaterPresence()+"\n    Planete la pus proche : "+getClosestPlanete()+"\n    Distance jusau'à "+getClosestPlanete()+" : "+getClosestPlaneteDistance();
+    }
 }
